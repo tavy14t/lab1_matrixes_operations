@@ -7,11 +7,12 @@ import static java.lang.System.exit;
 
 public class Main {
 
-    private static Matrix readMatrix(Scanner in, int dim){
+    private static Matrix readMatrix(Scanner in, int dim) throws Exception{
         int[][] m = new int[dim][dim];
         for(int i=0; i<m.length; i++) {
-            for (int j = 0; j < m[0].length; j++)
+            for (int j = 0; j < m[0].length; j++){
                 m[i][j] = in.nextInt();
+            }
         }
         return new Matrix(m);
     }
@@ -23,14 +24,15 @@ public class Main {
             int dimension = in.nextInt();
             m1 = readMatrix(in, dimension);
             m2 = readMatrix(in, dimension);
+
             System.out.println("First  matrix:");
             m1.printMatrix();
             System.out.println("Second matrix:");
             m2.printMatrix();
-            Matrix sumMatrix = m1.add(m2);
+            Matrix sumMatrix = Matrix.add(m1, m2);
             System.out.println("Sum of matrixes:");
             sumMatrix.printMatrix();
-            Matrix productMatrix = m1.multiply(m2);
+            Matrix productMatrix = Matrix.multiply(m1, m2);
             System.out.println("Multiplication of matrixes:");
             productMatrix.printMatrix();
         } catch (Exception e) {
